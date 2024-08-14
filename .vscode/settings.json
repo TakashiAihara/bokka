@@ -1,0 +1,14 @@
+{
+  "biome.enabled": true,
+  "biome.rename": true,
+  "biome.searchInPath": true,
+  "editor.defaultFormatter": "biomejs.biome",
+  "cSpell.words": [
+    "Aihara",
+    "biomejs",
+    "nestjs",
+    "swcrc",
+    "Takashi",
+    "unplugin"
+  ]
+}

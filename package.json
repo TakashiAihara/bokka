@@ -1,0 +1,59 @@
+{
+  "name": "mono-repo-nestjs",
+  "version": "0.0.1",
+  "private": true,
+  "description": "",
+  "license": "UNLICENSED",
+  "author": "TakashiAihara",
+  "type": "module",
+  "scripts": {
+    "analyze": "pnpm -r analyze",
+    "analyze:check": "pnpm -r analyze:check",
+    "analyze:check:ci": "pnpm -r analyze:check:ci",
+    "analyze:check:staged": "pnpm -r analyze:check:staged",
+    "analyze:check:unsafe": "pnpm -r analyze:check:unsafe",
+    "analyze:write": "pnpm -r analyze:write",
+    "build": "pnpm -r build",
+    "build:swc": "pnpm -r build:swc",
+    "build:type": "pnpm -r build:type",
+    "format": "pnpm -r format",
+    "format:check": "pnpm -r format:check",
+    "format:packages": "pnpm -r format:packages",
+    "format:write": "pnpm -r format:write",
+    "lint:check": "pnpm -r lint:check",
+    "lint:write": "pnpm -r lint:write",
+    "type:check": "pnpm -r type:check",
+    "prepare": "pnpm -r prepare",
+    "start": "pnpm -r start",
+    "start:debug": "pnpm -r start:debug",
+    "start:dev": "pnpm -r start:dev",
+    "start:prod": "pnpm -r start:prod",
+    "test": "pnpm -r test",
+    "test:all": "pnpm -r test:all",
+    "test:unit": "pnpm -r test:unit",
+    "test:base": "pnpm -r test:base",
+    "test:benchmark": "pnpm -r test:benchmark",
+    "test:cov": "pnpm -r test:cov",
+    "test:debug": "pnpm -r test:debug",
+    "test:debug:single-fork": "pnpm -r test:debug:single-fork",
+    "test:debug:single-thread": "pnpm -r test:debug:single-thread",
+    "test:integration": "pnpm -r test:integration",
+    "test:snapshot:update": "pnpm -r test:snapshot:update",
+    "test:watch": "pnpm -r test:watch"
+  },
+  "packageManager": "pnpm@9.6.0",
+  "engines": {
+    "node": ">=22.5.0",
+    "vscode": "^1.91.0",
+    "yarn": "DO NOT USE YARN",
+    "npm": "DO NOT USE NPM",
+    "pnpm": "9.6.0"
+  },
+  "volta": {
+    "node": "22.5.1",
+    "pnpm": "9.6.0"
+  },
+  "devDependencies": {
+    "@tools/biome": "workspace:^"
+  }
+}

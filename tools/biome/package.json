@@ -1,0 +1,7 @@
+{
+  "name": "@tools/biome",
+  "files": [
+    "*.json",
+    "*.jsonc"
+  ]
+}

@@ -1,0 +1,73 @@
+name: CI
+
+on:
+  pull_request:
+    branches: ["*"]
+  merge_group:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+
+env:
+  VOLTA_FEATURE_PNPM: 1
+
+jobs:
+  unit-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: volta-cli/action@v4
+      - run: pnpm i --frozen-lockfile
+
+      # - name: Copy env
+      #   shell: bash
+      #   run: cp .env.example .env
+
+      - run: pnpm test:unit
+
+  integration-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: volta-cli/action@v4
+      - run: pnpm i --frozen-lockfile
+
+      # - name: Copy env
+      #   shell: bash
+      #   run: cp .env.example .env
+
+      - run: pnpm test:integration
+
+  analyze:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: volta-cli/action@v4
+      - run: pnpm i --frozen-lockfile
+      - run: pnpm analyze:check
+
+  typecheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: volta-cli/action@v4
+      - run: pnpm i --frozen-lockfile
+      - run: pnpm type:check
+
+  build-swc:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: volta-cli/action@v4
+      - run: pnpm i --frozen-lockfile
+      - run: pnpm build:swc
+
+  build-type:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: volta-cli/action@v4
+      - run: pnpm i --frozen-lockfile
+      - run: pnpm build:type
