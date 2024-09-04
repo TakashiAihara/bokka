@@ -6,9 +6,16 @@
   "cSpell.words": [
     "Aihara",
     "biomejs",
+    "bokk",
     "nestjs",
     "swcrc",
     "Takashi",
     "unplugin"
+  ],
+  "json.schemas": [
+    {
+      "fileMatch": ["manifest.json"],
+      "url": "https://json.schemastore.org/chrome-manifest.json"
+    }
   ]
 }

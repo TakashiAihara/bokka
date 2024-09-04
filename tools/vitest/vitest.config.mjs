@@ -47,3 +47,5 @@ export const integrationConfig = mergeConfig(
     },
   }),
 );
+
+export default baseConfig;

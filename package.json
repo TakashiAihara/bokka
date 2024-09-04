@@ -1,5 +1,5 @@
 {
-  "name": "mono-repo-nestjs",
+  "name": "bokk",
   "version": "0.0.1",
   "private": true,
   "description": "",
@@ -23,7 +23,6 @@
     "lint:check": "pnpm -r lint:check",
     "lint:write": "pnpm -r lint:write",
     "type:check": "pnpm -r type:check",
-    "prepare": "pnpm -r prepare",
     "start": "pnpm -r start",
     "start:debug": "pnpm -r start:debug",
     "start:dev": "pnpm -r start:dev",
@@ -41,19 +40,21 @@
     "test:snapshot:update": "pnpm -r test:snapshot:update",
     "test:watch": "pnpm -r test:watch"
   },
-  "packageManager": "pnpm@9.6.0",
+  "packageManager": "pnpm@9.9.0",
   "engines": {
     "node": ">=22.5.0",
     "vscode": "^1.91.0",
     "yarn": "DO NOT USE YARN",
     "npm": "DO NOT USE NPM",
-    "pnpm": "9.6.0"
+    "pnpm": "9.9.0"
   },
   "volta": {
     "node": "22.5.1",
-    "pnpm": "9.6.0"
+    "pnpm": "9.9.0"
   },
   "devDependencies": {
-    "@tools/biome": "workspace:^"
+    "@biomejs/biome": "^1.8.3",
+    "@tools/biome": "workspace:^",
+    "husky": "^9.1.5"
   }
 }
