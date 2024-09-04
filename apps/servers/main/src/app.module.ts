@@ -4,7 +4,6 @@ import { IGreetingRepository } from '@domain/interfaces/repositories/greeting';
 import { GreetingRepository } from '@infrastructure/repositories/greeting';
 import { Module } from '@nestjs/common';
 import { AppController } from '@presentation/controllers/app';
-import { baseConfig } from '@tools/vitest';
 
 @Module({
   imports: [],
@@ -21,5 +20,3 @@ import { baseConfig } from '@tools/vitest';
   ],
 })
 export class AppModule {}
-
-baseConfig;
