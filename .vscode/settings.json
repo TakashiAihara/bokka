@@ -4,13 +4,27 @@
   "biome.searchInPath": true,
   "editor.defaultFormatter": "biomejs.biome",
   "cSpell.words": [
+    "ABFF",
     "Aihara",
     "biomejs",
     "bokk",
+    "copyfiles",
+    "Hatena",
+    "Inmem",
+    "inversify",
+    "jgoz",
     "nestjs",
+    "outdir",
+    "quicktype",
     "swcrc",
+    "Syncer",
     "Takashi",
-    "unplugin"
+    "tidb",
+    "tsbuildinfo",
+    "typecheck",
+    "UBFF",
+    "unplugin",
+    "valkey"
   ],
   "json.schemas": [
     {
