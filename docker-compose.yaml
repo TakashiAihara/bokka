@@ -1,0 +1,13 @@
+services:
+  diagrams:
+    container_name: diagrams
+    build:
+      context: ./docker/diagrams
+      dockerfile: Dockerfile
+    profiles:
+      - docs
+    volumes:
+      - ./docs:/app
+    working_dir: /app
+    command: >
+      bash -c "ls *.py | xargs python"
