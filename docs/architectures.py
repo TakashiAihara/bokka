@@ -1,7 +1,6 @@
 import os
 from diagrams import Diagram, Cluster, Edge
 from diagrams.custom import Custom
-from graphviz import Digraph
 from os import makedirs, path
 from dataclasses import dataclass
 from typing import Optional
@@ -103,67 +102,98 @@ class NodeCollection:
     def firefox(self, name: str = "Firefox"):
         return Custom(name, icon_path=IconCollection.firefox.icon_path)
 
+class EdgeCollection:
+    def trpc(self, name: str = ""):
+        return Edge(label=name, color="Blue")
+
+    def protobuf(self, name: str = ""):
+        return Edge(label=name, color="Green")
+
+    def type_safe(self, name: str = ""):
+        return Edge(label=name, color="Red")
+
+    def data(self, name: str = ""):
+        return Edge(label=name, style="dotted")
+
+class Legend:
+    def __init__(self):
+        class_name = self.__class__.__name__
+        nodes = NodeCollection()
+        edges = EdgeCollection()
+
+        with Diagram(class_name, show=False, filename=output_path + class_name):
+            nodes.hono("") \
+                << edges.type_safe("Type Safe") \
+                >> nodes.chrome_extension("")
+
+            nodes.nestjs("") \
+                << edges.trpc("tRPC") \
+                >> nodes.hono("")
+
+            nodes.nestjs("") \
+                << edges.protobuf("protobuf") \
+                >> nodes.pulsar("") \
+                << edges.protobuf("protobuf") \
+                >> nodes.nestjs("")
+
+            nodes.chrome("") \
+                >> edges.data("Data") \
+                >> nodes.chrome_extension("")
+
 class Sprint1:
     def __init__(self):
         class_name = self.__class__.__name__
         nodes = NodeCollection()
+        edges = EdgeCollection()
 
-        with Diagram(class_name + '"Chrome Sync"', direction="TB", show=False, filename=output_path + class_name):
-            Digraph(body="Chrome Sync", format="png")
-
+        with Diagram(class_name + '"Chrome Sync"', show=False, filename=output_path + class_name):
             with Cluster("User"):
                 extension_bff = nodes.hono("Extension BFF")
 
-                with Cluster("Google Account 1"):
-                    chrome1 = nodes.chrome()
-                    bookmarks1 = nodes.bookmarks()
-                    reading_list1 = nodes.reading_list()
-                    extension1 = nodes.chrome_extension()
-
-                with Cluster("Google Account 2"):
-                    chrome2 = nodes.chrome()
-                    bookmarks2 = nodes.bookmarks()
-                    reading_list2 = nodes.reading_list()
-                    extension2 = nodes.chrome_extension()
+                with Cluster("Google Account"):
+                    chrome = nodes.chrome()
+                    bookmarks = nodes.bookmarks()
+                    reading_list = nodes.reading_list()
+                    extension = nodes.chrome_extension()
 
             with Cluster("Management"):
-                cli = nodes.cli()
                 cli_bff = nodes.hono("CLI BFF")
+                cli = nodes.cli()
 
             with Cluster("System"):
                 pulsar = nodes.pulsar()
                 valkey = nodes.valkey()
                 analytics_service = nodes.nestjs("Analytics Service")
                 pages_service = nodes.nestjs("Pages Service")
+                notification_service = nodes.nestjs("Notification Service")
                 tidb = nodes.tidb("TiDB Serverless")
 
-            chrome1 >> Edge(label="Add") >> extension1
-            extension1 >> Edge(label="Add/Sync") >> bookmarks1
-            extension1 >> Edge(label="Add/Sync") >> reading_list1
-            chrome2 >> Edge(label="Add") >> extension2
-            extension2 >> Edge(label="Add/Sync") >> bookmarks2
-            extension2 >> Edge(label="Add/Sync") >> reading_list2
+            chrome >> edges.data("Add Pages Data") >> extension
+            bookmarks >> edges.data("Add Pages Data") >> extension
+            reading_list >> edges.data("Add Pages Data") >> extension
+            extension >> edges.type_safe("Pages Data") >> extension_bff
 
-            extension1 >> Edge(label="Type Safe") >> extension_bff
-            extension2 >> Edge(label="Type Safe") >> extension_bff
+            valkey >> edges.protobuf("\n".join(["User Session", "Processed Data", "Status"])) << extension_bff
+            extension_bff >> edges.protobuf() << pages_service
 
-            cli >> Edge(label="Type Safe") >> cli_bff
-            cli_bff >> Edge(label="tRPC") >> pages_service
-            cli_bff >> Edge(label="User Session") >> valkey
-            cli_bff >> Edge(label="Processed Data") >> valkey
-            valkey >> Edge(label="Processing Status") >> cli_bff
-            valkey >> Edge(label="Processed Page\nUser Session") >> extension_bff
-            extension_bff >> Edge(label="Processing Status") >> valkey
-            extension_bff >> Edge(label="tRPC") >> pages_service
+            cli >> edges.type_safe() << cli_bff
+            cli_bff >> edges.protobuf() << pages_service
+            cli_bff >> edges.protobuf("\n".join(["User Session", "Processed Data", "Status"])) >> valkey
 
-            pages_service >> Edge(label="protobuf\nqueuing") >> pulsar
+            pages_service >> edges.protobuf("protobuf\nQueuing") >> pulsar
             pages_service >> tidb
-            pulsar >> Edge(label="protobuf") >> analytics_service
-            analytics_service >> Edge(label="protobuf") >> pulsar
-            analytics_service >> Edge(label="Processed Page") >> valkey
-            analytics_service >> Edge(label="Processing Status") >> valkey
-            analytics_service >> Edge(label="Data Cache") >> valkey
             analytics_service >> tidb
+
+            analytics_service >> edges.protobuf("Job Data") << pulsar
+            analytics_service >> edges.protobuf("\n".join([
+                "Processed Page",
+                "Processing Status",
+                "Data Cache"
+            ])) >> valkey
+
+            pulsar >> edges.protobuf("RealTime Notification") >> notification_service
+            valkey >> edges.protobuf("OnTime Notification") >> notification_service
+            notification_service >> edges.trpc("SSE Notification") >> extension
 
 class Sprint2:
     def __init__(self):
@@ -250,5 +280,6 @@ class Sprint2:
             analytics_service >> tidb
 
 
+Legend()
 Sprint1()
 Sprint2()

@@ -1,5 +1,9 @@
 # Architectures
 
+## Legend
+
+![Legend](./images/Legend.png)
+
 ## Sprint1
 
 - Base Architecture (BFF/KVS/Queue/MicroService)
