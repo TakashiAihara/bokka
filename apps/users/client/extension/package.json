@@ -9,13 +9,13 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
-    "@biomejs/biome": "^1.9.2",
+    "@biomejs/biome": "catalog:",
     "@jgoz/esbuild-plugin-typecheck": "^4.0.1",
     "@tools/biome": "workspace:^",
     "@tools/typescript": "workspace:^",
     "@tools/vitest": "workspace:^",
     "@types/chrome": "^0.0.272",
-    "@types/node": "^22.7.3",
+    "@types/node": "catalog:",
     "@types/react": "^18.3.9",
     "@types/react-dom": "^18.3.0",
     "@vitest/coverage-v8": "^2.1.1",
@@ -26,9 +26,9 @@
     "quicktype": "^23.0.170",
     "rimraf": "^6.0.1",
     "sharp": "^0.33.5",
-    "tsx": "^4.19.1",
-    "typescript": "^5.6.2",
-    "vitest": "^2.1.1"
+    "tsx": "catalog:",
+    "typescript": "catalog:",
+    "vitest": "catalog:"
   },
   "name": "@users/extension",
   "scripts": {

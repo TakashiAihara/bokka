@@ -4,18 +4,45 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+catalogs:
+  default:
+    '@biomejs/biome':
+      specifier: ^1.9.2
+      version: 1.9.2
+    '@tsconfig/strictest':
+      specifier: ^2.0.5
+      version: 2.0.5
+    '@types/node':
+      specifier: ^22.7.3
+      version: 22.7.3
+    husky:
+      specifier: ^9.1.6
+      version: 9.1.6
+    tsx:
+      specifier: ^4.19.1
+      version: 4.19.1
+    typescript:
+      specifier: ^5.6.2
+      version: 5.6.2
+    unplugin-swc:
+      specifier: ^1.5.1
+      version: 1.5.1
+    vitest:
+      specifier: ^2.1.1
+      version: 2.1.1
+
 importers:
 
   .:
     devDependencies:
       '@biomejs/biome':
-        specifier: ^1.9.2
+        specifier: 'catalog:'
         version: 1.9.2
       '@tools/biome':
         specifier: workspace:^
         version: link:tools/biome
       husky:
-        specifier: ^9.1.6
+        specifier: 'catalog:'
         version: 9.1.6
 
   apps/cores/services/analytics: {}
@@ -47,7 +74,7 @@ importers:
         version: 7.8.1
     devDependencies:
       '@biomejs/biome':
-        specifier: ^1.9.2
+        specifier: 'catalog:'
         version: 1.9.2
       '@nestjs/cli':
         specifier: ^10.4.5
@@ -71,7 +98,7 @@ importers:
         specifier: ^5.0.0
         version: 5.0.0
       '@types/node':
-        specifier: ^22.7.3
+        specifier: 'catalog:'
         version: 22.7.3
       '@types/supertest':
         specifier: ^6.0.2
@@ -95,16 +122,16 @@ importers:
         specifier: ^1.8.10
         version: 1.8.10
       tsx:
-        specifier: ^4.19.1
+        specifier: 'catalog:'
         version: 4.19.1
       typescript:
-        specifier: ^5.6.2
+        specifier: 'catalog:'
         version: 5.6.2
       unplugin-swc:
-        specifier: ^1.5.1
+        specifier: 'catalog:'
         version: 1.5.1(@swc/core@1.7.28)(rollup@4.20.0)
       vitest:
-        specifier: ^2.1.1
+        specifier: 'catalog:'
         version: 2.1.1(@types/node@22.7.3)(terser@5.31.3)
 
   apps/users/bff/extension: {}
@@ -134,7 +161,7 @@ importers:
         version: 3.23.8
     devDependencies:
       '@biomejs/biome':
-        specifier: ^1.9.2
+        specifier: 'catalog:'
         version: 1.9.2
       '@jgoz/esbuild-plugin-typecheck':
         specifier: ^4.0.1
@@ -152,7 +179,7 @@ importers:
         specifier: ^0.0.272
         version: 0.0.272
       '@types/node':
-        specifier: ^22.7.3
+        specifier: 'catalog:'
         version: 22.7.3
       '@types/react':
         specifier: ^18.3.9
@@ -185,40 +212,40 @@ importers:
         specifier: ^0.33.5
         version: 0.33.5
       tsx:
-        specifier: ^4.19.1
+        specifier: 'catalog:'
         version: 4.19.1
       typescript:
-        specifier: ^5.6.2
+        specifier: 'catalog:'
         version: 5.6.2
       vitest:
-        specifier: ^2.1.1
+        specifier: 'catalog:'
         version: 2.1.1(@types/node@22.7.3)(terser@5.31.3)
 
   tools/biome:
     dependencies:
       '@biomejs/biome':
-        specifier: ^1.9.2
+        specifier: 'catalog:'
         version: 1.9.2
 
   tools/typescript:
     devDependencies:
       '@tsconfig/strictest':
-        specifier: ^2.0.5
+        specifier: 'catalog:'
         version: 2.0.5
 
   tools/vitest:
     devDependencies:
       '@biomejs/biome':
-        specifier: ^1.9.2
+        specifier: 'catalog:'
         version: 1.9.2
       '@tools/biome':
         specifier: workspace:^
         version: link:../biome
       unplugin-swc:
-        specifier: ^1.5.1
+        specifier: 'catalog:'
         version: 1.5.1(@swc/core@1.7.28)(rollup@4.20.0)
       vitest:
-        specifier: ^2.1.1
+        specifier: 'catalog:'
         version: 2.1.1(@types/node@22.7.3)(terser@5.31.3)
 
 packages:

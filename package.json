@@ -41,9 +41,9 @@
     "type:check": "pnpm -r type:check"
   },
   "devDependencies": {
-    "@biomejs/biome": "^1.9.2",
+    "@biomejs/biome": "catalog:",
     "@tools/biome": "workspace:^",
-    "husky": "^9.1.6"
+    "husky": "catalog:"
   },
   "packageManager": "pnpm@9.11.0",
   "engines": {
