@@ -1,5 +1,6 @@
 packages:
   - tools/*
   - packages/*
-  - apps/clients/*
-  - apps/servers/*
+  - apps/cores/**
+  - apps/users/**
+  - apps/managers/*
