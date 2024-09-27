@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "description": "",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "author": "TakashiAihara",
   "type": "module",
   "scripts": {
@@ -22,14 +22,12 @@
     "format:write": "pnpm -r format:write",
     "lint:check": "pnpm -r lint:check",
     "lint:write": "pnpm -r lint:write",
-    "type:check": "pnpm -r type:check",
     "start": "pnpm -r start",
     "start:debug": "pnpm -r start:debug",
     "start:dev": "pnpm -r start:dev",
     "start:prod": "pnpm -r start:prod",
     "test": "pnpm -r test",
     "test:all": "pnpm -r test:all",
-    "test:unit": "pnpm -r test:unit",
     "test:base": "pnpm -r test:base",
     "test:benchmark": "pnpm -r test:benchmark",
     "test:cov": "pnpm -r test:cov",
@@ -38,23 +36,25 @@
     "test:debug:single-thread": "pnpm -r test:debug:single-thread",
     "test:integration": "pnpm -r test:integration",
     "test:snapshot:update": "pnpm -r test:snapshot:update",
-    "test:watch": "pnpm -r test:watch"
+    "test:unit": "pnpm -r test:unit",
+    "test:watch": "pnpm -r test:watch",
+    "type:check": "pnpm -r type:check"
   },
-  "packageManager": "pnpm@9.9.0",
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.2",
+    "@tools/biome": "workspace:^",
+    "husky": "^9.1.6"
+  },
+  "packageManager": "pnpm@9.11.0",
   "engines": {
     "node": ">=22.5.0",
-    "vscode": "^1.91.0",
-    "yarn": "DO NOT USE YARN",
     "npm": "DO NOT USE NPM",
-    "pnpm": "9.9.0"
+    "pnpm": "9.11.0",
+    "vscode": "^1.93.0",
+    "yarn": "DO NOT USE YARN"
   },
   "volta": {
     "node": "22.5.1",
-    "pnpm": "9.9.0"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "^1.8.3",
-    "@tools/biome": "workspace:^",
-    "husky": "^9.1.5"
+    "pnpm": "9.11.0"
   }
 }

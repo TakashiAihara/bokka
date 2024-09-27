@@ -2,15 +2,15 @@
   "name": "@tools/vitest",
   "type": "module",
   "exports": {
-    ".": "./vitest.config.mjs"
+    ".": "./vites33t.config.mjs"
   },
   "scripts": {
     "analyze:write": "biome check --write"
   },
   "devDependencies": {
-    "@biomejs/biome": "^1.8.3",
+    "@biomejs/biome": "^1.9.2",
     "@tools/biome": "workspace:^",
     "unplugin-swc": "^1.5.1",
-    "vitest": "^2.0.4"
+    "vitest": "^2.1.1"
   }
 }
