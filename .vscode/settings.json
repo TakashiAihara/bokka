@@ -28,8 +28,13 @@
   ],
   "json.schemas": [
     {
-      "fileMatch": ["manifest.json"],
+      "fileMatch": [
+        "manifest.json"
+      ],
       "url": "https://json.schemastore.org/chrome-manifest.json"
     }
-  ]
+  ],
+  "[typescript]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  }
 }
