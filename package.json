@@ -45,16 +45,16 @@
     "@tools/biome": "workspace:^",
     "husky": "catalog:"
   },
-  "packageManager": "pnpm@9.11.0",
+  "packageManager": "pnpm@9.12.3",
   "engines": {
     "node": ">=22.5.0",
     "npm": "DO NOT USE NPM",
-    "pnpm": "9.11.0",
+    "pnpm": "9.12.3",
     "vscode": "^1.93.0",
     "yarn": "DO NOT USE YARN"
   },
   "volta": {
     "node": "22.5.1",
-    "pnpm": "9.11.0"
+    "pnpm": "9.12.3"
   }
 }
