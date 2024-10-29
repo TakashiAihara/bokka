@@ -1,13 +1,5 @@
 {
-  "exclude": [
-    "node_modules",
-    "coverage",
-    "dist",
-    "test",
-    "**/*.(spec|test).ts"
-  ],
+  "exclude": ["node_modules", "coverage", "dist", "test", "**/*.(spec|test).ts"],
   "extends": "./tsconfig.json",
-  "include": [
-    "src/**/*.(ts|tsx)$"
-  ]
+  "include": ["src/**/*.(ts|tsx)$"]
 }

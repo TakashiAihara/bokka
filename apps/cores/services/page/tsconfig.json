@@ -3,27 +3,13 @@
     "outDir": "./dist",
     "baseUrl": "./",
     "paths": {
-      "@/*": [
-        "src/*"
-      ],
-      "@domain/*": [
-        "src/domain/*"
-      ],
-      "@application/*": [
-        "src/application/*"
-      ],
-      "@presentation/*": [
-        "src/presentation/*"
-      ],
-      "@infrastructure/*": [
-        "src/infrastructure/*"
-      ]
+      "@/*": ["src/*"],
+      "@domain/*": ["src/domain/*"],
+      "@application/*": ["src/application/*"],
+      "@presentation/*": ["src/presentation/*"],
+      "@infrastructure/*": ["src/infrastructure/*"]
     }
   },
-  "exclude": [
-    "node_modules",
-    "dist",
-    "coverage"
-  ],
+  "exclude": ["node_modules", "dist", "coverage"],
   "extends": "@tools/typescript/tsconfig.json"
 }
