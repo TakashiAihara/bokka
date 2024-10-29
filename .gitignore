@@ -1,10 +1,24 @@
-# compiled output
+# Compiled output
 dist/
-node_modules/
 build/
+lambda.zip
+
+# Dependencies
+node_modules/
+.pnpm-store
+.yarn/
+!.yarn/releases
+
+# Environment variables
+.env
+.env.development.local
+.env.test.local
+.env.production.local
+.env.local
+.env.production
 
 # Logs
-logs
+logs/
 *.log
 npm-debug.log*
 pnpm-debug.log*
@@ -12,15 +26,21 @@ yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
 
-# OS
-.DS_Store
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
 
-# Tests
-coverage/
-.nyc_output
-
-# IDEs and editors
+# IDE - IntelliJ
 .idea/
+.idea/workspace.xml
+.idea/usage.statistics.xml
+.idea/shelf
+
+# Other IDEs and editors
 .project
 .classpath
 .c9/
@@ -28,23 +48,9 @@ coverage/
 .settings/
 *.sublime-workspace
 
-# IDE - VSCode
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-
-# dotenv environment variable files
-.env
-.env.development.local
-.env.test.local
-.env.production.local
-.env.local
-
-# temp directory
-.temp
-.tmp
+# Tests
+coverage/
+.nyc_output
 
 # Runtime data
 pids
@@ -52,8 +58,12 @@ pids
 *.seed
 *.pid.lock
 
-# Diagnostic reports (https://nodejs.org/api/report.html)
+# Diagnostic reports
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 
-# For Github Actions pnpm env
-.pnpm-store
+# OS generated files
+.DS_Store
+
+# Temporary files
+.temp
+.tmp

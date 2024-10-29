@@ -1,4 +1,3 @@
-import swc from 'unplugin-swc';
 import { defineConfig, mergeConfig } from 'vitest/config';
 
 export const baseConfig = defineConfig({
@@ -7,30 +6,6 @@ export const baseConfig = defineConfig({
     root: './',
     watch: false,
   },
-  plugins: [
-    swc.vite({
-      configFile: '.test.swcrc',
-      isModule: true,
-      jsc: {
-        parser: {
-          syntax: 'typescript',
-          tsx: true,
-          dynamicImport: true,
-          decorators: true,
-        },
-        transform: {
-          legacyDecorator: true,
-          decoratorMetadata: true,
-          react: {
-            runtime: 'automatic',
-          },
-        },
-        target: 'esnext',
-        loose: false,
-      },
-      module: { type: 'es6' },
-    }),
-  ],
 });
 
 export const integrationConfig = mergeConfig(

@@ -1,0 +1,32 @@
+{
+  "name": "@users/bff-cli",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "test": "vitest",
+    "build": "pnpm build:lambda && pnpm build:server",
+    "build:lambda": "esbuild --bundle --format=esm --outfile=./dist/index.js --platform=node --target=node20 ./src/index.ts",
+    "build:server": "esbuild --bundle --format=esm --outfile=./dist/server.js --platform=node --target=node20 ./src/server.ts",
+    "start": "node dist/server.js",
+    "zip": "zip -j lambda.zip dist/index.js",
+    "update": "aws lambda update-function-code --zip-file fileb://lambda.zip --function-name hello",
+    "deploy": "run-s build zip update"
+  },
+  "devDependencies": {
+    "esbuild": "^0.21.4",
+    "npm-run-all2": "^6.2.0",
+    "@biomejs/biome": "catalog:",
+    "@tools/biome": "workspace:^",
+    "@tools/typescript": "workspace:^",
+    "@tools/vitest": "workspace:^",
+    "@types/node": "catalog:",
+    "@vitest/coverage-v8": "catalog:",
+    "typescript": "catalog:",
+    "vitest": "catalog:",
+    "tsx": "catalog:"
+  },
+  "dependencies": {
+    "@hono/node-server": "^1.13.3",
+    "hono": "^4.6.8"
+  }
+}
