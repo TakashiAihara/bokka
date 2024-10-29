@@ -6,7 +6,8 @@
     "vitest": "catalog:"
   },
   "exports": {
-    ".": "./vites33t.config.mjs"
+    ".": "./vitest.config.mjs",
+    "./*": "./*/vitest.config.mjs"
   },
   "name": "@tools/vitest",
   "scripts": {
