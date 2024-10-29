@@ -1,7 +1,14 @@
 {
   "name": "@users/bff-cli",
   "type": "module",
+
+  "exports": {
+    ".": {
+      "types": "./src/app.ts"
+    }
+  },
   "scripts": {
+    "analyze:write": "biome check --write",
     "dev": "tsx watch src/server.ts",
     "test": "vitest",
     "build": "pnpm build:lambda && pnpm build:server",

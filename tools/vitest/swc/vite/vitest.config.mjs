@@ -1,8 +1,9 @@
 import swc from 'unplugin-swc';
 import { mergeConfig } from 'vitest/config';
-import { baseConfig as base, integrationConfig as integration } from "../../vitest.config.mjs"
+import { baseConfig as base, integrationConfig as integration } from '../../vitest.config.mjs';
 
-export const baseConfig = mergeConfig(base,{ plugins: [
+export const baseConfig = mergeConfig(base, {
+  plugins: [
     swc.vite({
       configFile: '.test.swcrc',
       isModule: true,
@@ -26,12 +27,8 @@ export const baseConfig = mergeConfig(base,{ plugins: [
       module: { type: 'es6' },
     }),
   ],
-}
-)
+});
 
-export const integrationConfig = mergeConfig(
-  baseConfig,
-  integration,
-);
+export const integrationConfig = mergeConfig(baseConfig, integration);
 
 export default baseConfig;
