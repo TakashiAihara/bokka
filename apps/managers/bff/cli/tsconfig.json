@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "strict": true,
+    "skipLibCheck": true,
+    "jsx": "react-jsx",
+    "jsxImportSource": "hono/jsx",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "@domain/*": ["src/domain/*"],
+      "@application/*": ["src/application/*"],
+      "@presentation/*": ["src/presentation/*"],
+      "@infrastructure/*": ["src/infrastructure/*"]
+    }
+  },
+  "exclude": ["node_modules", "dist", "coverage"],
+  "extends": "@tools/typescript/tsconfig.json"
+}
