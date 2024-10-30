@@ -1,4 +1,22 @@
 {
   "name": "@managers/cli",
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "scripts": {
+    "analyze:write": "biome check --write",
+    "exec:main": "tsx src/main"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "catalog:",
+    "@tools/biome": "workspace:^",
+    "@tools/typescript": "workspace:^",
+    "@tools/vitest": "workspace:^",
+    "typescript": "catalog:",
+    "tsx": "catalog:",
+    "vitest": "catalog:"
+  },
+  "dependencies": {
+    "@users/bff-cli": "workspace:*",
+    "commander": "^12.1.0",
+    "hono": "^4.6.8"
+  }
 }
