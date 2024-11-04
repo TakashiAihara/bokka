@@ -61,5 +61,8 @@
   },
   "[graphql]": {
     "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter"
   }
 }
