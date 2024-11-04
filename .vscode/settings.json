@@ -9,16 +9,21 @@
     "bokk",
     "copyfiles",
     "Hatena",
+    "hono",
     "Inmem",
     "inversify",
     "jgoz",
     "nestjs",
+    "nextjs",
+    "onprem",
     "outdir",
+    "protobuf",
     "quicktype",
     "swcrc",
     "Syncer",
     "Takashi",
     "tidb",
+    "trpc",
     "tsbuildinfo",
     "typecheck",
     "UBFF",
@@ -56,5 +61,8 @@
   },
   "[graphql]": {
     "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter"
   }
 }
