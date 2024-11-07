@@ -1,5 +1,5 @@
 {
-  "name": "@users/bff-cli",
+  "name": "@users/cli-bff",
   "type": "module",
 
   "exports": {

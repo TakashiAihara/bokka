@@ -3,7 +3,7 @@ packages:
   - packages/*
   - apps/cores/**
   - apps/users/**
-  - apps/managers/*
+  - apps/managers/**
 
 catalog:
   '@vitest/coverage-v8': '^2.1.1'

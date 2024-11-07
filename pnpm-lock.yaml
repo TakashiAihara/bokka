@@ -400,6 +400,83 @@ importers:
 
   apps/cores/feeds/streamer: {}
 
+  apps/managers/bff/cli:
+    dependencies:
+      '@hono/node-server':
+        specifier: ^1.13.3
+        version: 1.13.3(hono@4.6.8)
+      hono:
+        specifier: ^4.6.8
+        version: 4.6.8
+    devDependencies:
+      '@biomejs/biome':
+        specifier: 'catalog:'
+        version: 1.9.4
+      '@tools/biome':
+        specifier: workspace:^
+        version: link:../../../../tools/biome
+      '@tools/typescript':
+        specifier: workspace:^
+        version: link:../../../../tools/typescript
+      '@tools/vitest':
+        specifier: workspace:^
+        version: link:../../../../tools/vitest
+      '@types/node':
+        specifier: 'catalog:'
+        version: 22.7.3
+      '@vitest/coverage-v8':
+        specifier: 'catalog:'
+        version: 2.1.1(vitest@2.1.1(@types/node@22.7.3)(terser@5.31.3))
+      esbuild:
+        specifier: ^0.21.4
+        version: 0.21.5
+      npm-run-all2:
+        specifier: ^6.2.0
+        version: 6.2.6
+      tsx:
+        specifier: 'catalog:'
+        version: 4.19.1
+      typescript:
+        specifier: 'catalog:'
+        version: 5.6.2
+      vitest:
+        specifier: 'catalog:'
+        version: 2.1.1(@types/node@22.7.3)(terser@5.31.3)
+
+  apps/managers/client/cli:
+    dependencies:
+      '@users/cli-bff':
+        specifier: workspace:*
+        version: link:../../../users/bff/cli
+      commander:
+        specifier: ^12.1.0
+        version: 12.1.0
+      hono:
+        specifier: ^4.6.8
+        version: 4.6.8
+    devDependencies:
+      '@biomejs/biome':
+        specifier: 'catalog:'
+        version: 1.9.4
+      '@tools/biome':
+        specifier: workspace:^
+        version: link:../../../../tools/biome
+      '@tools/typescript':
+        specifier: workspace:^
+        version: link:../../../../tools/typescript
+      '@tools/vitest':
+        specifier: workspace:^
+        version: link:../../../../tools/vitest
+      tsx:
+        specifier: 'catalog:'
+        version: 4.19.1
+      typescript:
+        specifier: 'catalog:'
+        version: 5.6.2
+      vitest:
+        specifier: 'catalog:'
+        version: 2.1.1(@types/node@22.8.2)(terser@5.31.3)
+
   apps/users/bff/cli:
     dependencies:
       '@hono/node-server':
@@ -447,7 +524,7 @@ importers:
 
   apps/users/client/cli:
     dependencies:
-      '@users/bff-cli':
+      '@users/cli-bff':
         specifier: workspace:*
         version: link:../../bff/cli
       commander:
