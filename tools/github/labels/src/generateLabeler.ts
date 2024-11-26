@@ -9,9 +9,18 @@ const generateLabelerYml = async () => {
   const outputPath = resolve(workspaceRoot, '.github', 'labeler.yml');
 
   const { pathConfigs } = settings;
+  const labelerConfig: Record<string, { 'changed-files': string[] }[]> = {};
+
+  for (const [label, paths] of Object.entries(pathConfigs)) {
+    labelerConfig[label] = [
+      {
+        'changed-files': paths,
+      },
+    ];
+  }
 
   mkdirSync(dirname(outputPath), { recursive: true });
-  writeFileSync(outputPath, dump(pathConfigs), 'utf8');
+  writeFileSync(outputPath, dump(labelerConfig), 'utf8');
 };
 
 generateLabelerYml()
