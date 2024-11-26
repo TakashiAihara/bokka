@@ -1,4 +1,15 @@
 {
+  "name": "@packages/shared",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "files": [
+    "src"
+  ],
+  "scripts": {
+    "analyze:write": "biome check --write"
+  },
   "devDependencies": {
     "@biomejs/biome": "catalog:",
     "@tools/biome": "workspace:^",
@@ -6,17 +17,8 @@
     "@tools/vitest": "workspace:^",
     "@types/node": "catalog:",
     "@vitest/coverage-v8": "catalog:",
+    "tsx": "catalog:",
     "typescript": "catalog:",
-    "vitest": "catalog:",
-    "tsx": "catalog:"
-  },
-  "name": "@packages/shared",
-  "scripts": {
-    "analyze:write": "biome check --write"
-  },
-  "type": "module",
-  "files": ["src"],
-  "exports": {
-    ".": "./src/index.ts"
+    "vitest": "catalog:"
   }
 }

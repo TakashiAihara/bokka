@@ -5,18 +5,18 @@
     "analyze:write": "biome check --write",
     "exec:main": "tsx src/main"
   },
+  "dependencies": {
+    "@users/cli-bff": "workspace:*",
+    "commander": "^12.1.0",
+    "hono": "^4.6.8"
+  },
   "devDependencies": {
     "@biomejs/biome": "catalog:",
     "@tools/biome": "workspace:^",
     "@tools/typescript": "workspace:^",
     "@tools/vitest": "workspace:^",
-    "typescript": "catalog:",
     "tsx": "catalog:",
+    "typescript": "catalog:",
     "vitest": "catalog:"
-  },
-  "dependencies": {
-    "@users/cli-bff": "workspace:*",
-    "commander": "^12.1.0",
-    "hono": "^4.6.8"
   }
 }

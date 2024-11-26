@@ -1,17 +1,17 @@
 {
+  "name": "@tools/vitest",
+  "type": "module",
+  "exports": {
+    ".": "./vitest.config.mjs",
+    "./*": "./*/vitest.config.mjs"
+  },
+  "scripts": {
+    "analyze:write": "biome check --write"
+  },
   "devDependencies": {
     "@biomejs/biome": "catalog:",
     "@tools/biome": "workspace:^",
     "unplugin-swc": "catalog:",
     "vitest": "catalog:"
-  },
-  "exports": {
-    ".": "./vitest.config.mjs",
-    "./*": "./*/vitest.config.mjs"
-  },
-  "name": "@tools/vitest",
-  "scripts": {
-    "analyze:write": "biome check --write"
-  },
-  "type": "module"
+  }
 }

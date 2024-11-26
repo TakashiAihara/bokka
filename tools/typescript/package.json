@@ -1,9 +1,9 @@
 {
-  "devDependencies": {
-    "@tsconfig/strictest": "catalog:"
-  },
+  "name": "@tools/typescript",
   "files": [
     "*.json"
   ],
-  "name": "@tools/typescript"
+  "devDependencies": {
+    "@tsconfig/strictest": "catalog:"
+  }
 }

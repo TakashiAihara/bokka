@@ -8,6 +8,15 @@
     "generate:labeler": "tsx src/generateLabeler.ts",
     "test": "vitest"
   },
+  "dependencies": {
+    "@octokit/rest": "^21.0.2",
+    "@pnpm/find-workspace-dir": "^7.0.2",
+    "isomorphic-git": "^1.27.2",
+    "js-yaml": "^4.1.0",
+    "octokit": "^4.0.2",
+    "parse-github-url": "^1.0.3",
+    "zod": "^3.23.8"
+  },
   "devDependencies": {
     "@biomejs/biome": "catalog:",
     "@packages/shared": "workspace:*",
@@ -21,14 +30,5 @@
     "tsx": "catalog:",
     "typescript": "catalog:",
     "vitest": "catalog:"
-  },
-  "dependencies": {
-    "@octokit/rest": "^21.0.2",
-    "@pnpm/find-workspace-dir": "^7.0.2",
-    "isomorphic-git": "^1.27.2",
-    "js-yaml": "^4.1.0",
-    "octokit": "^4.0.2",
-    "parse-github-url": "^1.0.3",
-    "zod": "^3.23.8"
   }
 }

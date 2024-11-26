@@ -1,10 +1,10 @@
 {
-  "dependencies": {
-    "@biomejs/biome": "catalog:"
-  },
+  "name": "@tools/biome",
   "files": [
     "*.json",
     "*.jsonc"
   ],
-  "name": "@tools/biome"
+  "dependencies": {
+    "@biomejs/biome": "catalog:"
+  }
 }
