@@ -9,12 +9,19 @@ const generateLabelerYml = async () => {
   const outputPath = resolve(workspaceRoot, '.github', 'labeler.yml');
 
   const { pathConfigs } = settings;
-  const labelerConfig: Record<string, { 'changed-files': string[] }[]> = {};
+  const labelerConfig: Record<
+    string,
+    { 'changed-files': { 'any-glob-to-any-file': string[] }[] }[]
+  > = {};
 
   for (const [label, paths] of Object.entries(pathConfigs)) {
     labelerConfig[label] = [
       {
-        'changed-files': paths,
+        'changed-files': [
+          {
+            'any-glob-to-any-file': paths,
+          },
+        ],
       },
     ];
   }
