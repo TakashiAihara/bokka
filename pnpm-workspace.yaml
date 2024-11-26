@@ -1,6 +1,6 @@
 packages:
-  - tools/*
-  - packages/*
+  - tools/**
+  - packages/**
   - apps/cores/**
   - apps/users/**
   - apps/managers/**
