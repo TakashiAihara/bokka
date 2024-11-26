@@ -47,6 +47,9 @@ importers:
       husky:
         specifier: 'catalog:'
         version: 9.1.6
+      sort-package-json:
+        specifier: ^2.10.1
+        version: 2.10.1
 
   apps/cores/bookmarks/analyzer: {}
 

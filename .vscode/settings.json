@@ -153,6 +153,7 @@
     "source.sortImports": "explicit",
     "source.removeUnused.ts": "explicit",
     "source.fixAll.ts": "explicit",
+    "source.sortPackageJson": "explicit"
   },
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true
