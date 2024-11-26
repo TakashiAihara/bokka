@@ -1,53 +1,74 @@
 architecture:container:
-  - apps/cores/**/*
+  - changed-files:
+      - apps/cores/**/*
 architecture:serverless:
-  - apps/**/bff/**/*
+  - changed-files:
+      - apps/**/bff/**/*
 framework:react:
-  - apps/users/client/extension/**/*
+  - changed-files:
+      - apps/users/client/extension/**/*
 framework:commander:
-  - apps/**/client/cli/**/*
+  - changed-files:
+      - apps/**/client/cli/**/*
 framework:hono:
-  - apps/**/bff/**/*
+  - changed-files:
+      - apps/**/bff/**/*
 framework:nestjs:
-  - apps/cores/**/*
+  - changed-files:
+      - apps/cores/**/*
 tool:biome:
-  - tools/biome/**/*
+  - changed-files:
+      - tools/biome/**/*
 tool:github-actions:
-  - .github/workflows/**/*
+  - changed-files:
+      - .github/workflows/**/*
 tool:github-labels:
-  - .github/labeler.yml
+  - changed-files:
+      - .github/labeler.yml
 tool:typescript:
-  - '**/*.ts'
-  - '**/*.tsx'
+  - changed-files:
+      - "**/*.ts"
+      - "**/*.tsx"
 tool:vitest:
-  - '**/vitest.config.*'
-  - '**/*.test.ts'
-  - '**/*.spec.ts'
+  - changed-files:
+      - "**/vitest.config.*"
+      - "**/*.test.ts"
+      - "**/*.spec.ts"
 doc:readme:
-  - README.md
+  - changed-files:
+      - README.md
 doc:architectures:
-  - docs/architectures.md
+  - changed-files:
+      - docs/architectures.md
 doc:requirements:
-  - docs/requirements.md
+  - changed-files:
+      - docs/requirements.md
 experience:cd:
-  - .github/workflows/**/*-deploy.{yaml,yml}
+  - changed-files:
+      - .github/workflows/**/*-deploy.{yaml,yml}
 experience:ci:
-  - .github/workflows/**/*
+  - changed-files:
+      - .github/workflows/**/*
 experience:develop:
-  - tsconfig.json
-  - .npmrc
-  - .gitignore
-  - package.json
-  - .husky/**/*
-  - .vscode/**/*
+  - changed-files:
+      - tsconfig.json
+      - .npmrc
+      - .gitignore
+      - package.json
+      - .husky/**/*
+      - .vscode/**/*
 experience:docker:
-  - docker-compose.{yaml,yml}
-  - '**/docker-compose.{yaml,yml}'
-  - Dockerfile
-  - '**/Dockerfile'
+  - changed-files:
+      - docker-compose.{yaml,yml}
+      - "**/docker-compose.{yaml,yml}"
+      - Dockerfile
+      - "**/Dockerfile"
 role:bff:
-  - apps/**/bff/**/*
+  - changed-files:
+      - apps/**/bff/**/*
 role:client:
-  - apps/client/**/*
+  - changed-files:
+      - apps/client/**/*
 role:service:
-  - apps/cores/**/*
+  - changed-files:
+      - apps/cores/**/*
