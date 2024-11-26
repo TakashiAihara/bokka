@@ -22,33 +22,33 @@ framework:nestjs:
   - changed-files:
       - any-glob-to-any-file:
           - apps/cores/**/*
-tool:biome:
-  - changed-files:
-      - any-glob-to-any-file:
-          - tools/biome/**/*
 tool:github-actions:
   - changed-files:
       - any-glob-to-any-file:
           - .github/workflows/**/*
+tool:biome:
+  - changed-files:
+      - any-glob-to-any-file:
+          - tools/biome/**/*
 tool:github-labels:
   - changed-files:
       - any-glob-to-any-file:
+          - tools/github/labels/**/*
           - .github/labeler.yml
 tool:typescript:
   - changed-files:
       - any-glob-to-any-file:
-          - '**/*.ts'
-          - '**/*.tsx'
+          - tools/typescript/**/*
 tool:vitest:
   - changed-files:
       - any-glob-to-any-file:
+          - tools/vitest/**/*
           - '**/vitest.config.*'
-          - '**/*.test.ts'
-          - '**/*.spec.ts'
 doc:readme:
   - changed-files:
       - any-glob-to-any-file:
           - README.md
+          - '**/README.md'
 doc:architectures:
   - changed-files:
       - any-glob-to-any-file:
