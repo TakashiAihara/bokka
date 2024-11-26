@@ -22,6 +22,7 @@
     "format:write": "pnpm -r format:write",
     "lint:check": "pnpm -r lint:check",
     "lint:write": "pnpm -r lint:write",
+    "sort-package-json": "pnpm -r exec sort-package-json",
     "start": "pnpm -r start",
     "start:debug": "pnpm -r start:debug",
     "start:dev": "pnpm -r start:dev",
@@ -43,7 +44,8 @@
   "devDependencies": {
     "@biomejs/biome": "catalog:",
     "@tools/biome": "workspace:^",
-    "husky": "catalog:"
+    "husky": "catalog:",
+    "sort-package-json": "^2.10.1"
   },
   "packageManager": "pnpm@9.12.3",
   "engines": {
