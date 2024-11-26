@@ -3,5 +3,5 @@
   "files": {
     "ignore": ["generated/**/*"]
   },
-  "extends": ["./node_modules/@tools/biome/biome.jsonc"]
+  "extends": ["./node_modules/@tools/biome/biome.json"]
 }
