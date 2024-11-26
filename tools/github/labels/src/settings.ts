@@ -10,13 +10,13 @@ export const settings: LabelSettings = {
     'framework:hono': ['apps/**/bff/**/*'],
     'framework:nestjs': ['apps/cores/**/*'],
 
-    'tool:biome': ['tools/biome/**/*'],
     'tool:github-actions': ['.github/workflows/**/*'],
-    'tool:github-labels': ['.github/labeler.yml'],
-    'tool:typescript': ['**/*.ts', '**/*.tsx'],
-    'tool:vitest': ['**/vitest.config.*', '**/*.test.ts', '**/*.spec.ts'],
+    'tool:biome': ['tools/biome/**/*'],
+    'tool:github-labels': ['tools/github/labels/**/*', '.github/labeler.yml'],
+    'tool:typescript': ['tools/typescript/**/*'],
+    'tool:vitest': ['tools/vitest/**/*', '**/vitest.config.*'],
 
-    'doc:readme': ['README.md'],
+    'doc:readme': ['README.md', '**/README.md'],
     'doc:architectures': ['docs/architectures.md'],
     'doc:requirements': ['docs/requirements.md'],
 

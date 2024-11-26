@@ -1,53 +1,95 @@
 architecture:container:
-  - apps/cores/**/*
+  - changed-files:
+      - any-glob-to-any-file:
+          - apps/cores/**/*
 architecture:serverless:
-  - apps/**/bff/**/*
+  - changed-files:
+      - any-glob-to-any-file:
+          - apps/**/bff/**/*
 framework:react:
-  - apps/users/client/extension/**/*
+  - changed-files:
+      - any-glob-to-any-file:
+          - apps/users/client/extension/**/*
 framework:commander:
-  - apps/**/client/cli/**/*
+  - changed-files:
+      - any-glob-to-any-file:
+          - apps/**/client/cli/**/*
 framework:hono:
-  - apps/**/bff/**/*
+  - changed-files:
+      - any-glob-to-any-file:
+          - apps/**/bff/**/*
 framework:nestjs:
-  - apps/cores/**/*
-tool:biome:
-  - tools/biome/**/*
+  - changed-files:
+      - any-glob-to-any-file:
+          - apps/cores/**/*
 tool:github-actions:
-  - .github/workflows/**/*
+  - changed-files:
+      - any-glob-to-any-file:
+          - .github/workflows/**/*
+tool:biome:
+  - changed-files:
+      - any-glob-to-any-file:
+          - tools/biome/**/*
 tool:github-labels:
-  - .github/labeler.yml
+  - changed-files:
+      - any-glob-to-any-file:
+          - tools/github/labels/**/*
+          - .github/labeler.yml
 tool:typescript:
-  - '**/*.ts'
-  - '**/*.tsx'
+  - changed-files:
+      - any-glob-to-any-file:
+          - tools/typescript/**/*
 tool:vitest:
-  - '**/vitest.config.*'
-  - '**/*.test.ts'
-  - '**/*.spec.ts'
+  - changed-files:
+      - any-glob-to-any-file:
+          - tools/vitest/**/*
+          - '**/vitest.config.*'
 doc:readme:
-  - README.md
+  - changed-files:
+      - any-glob-to-any-file:
+          - README.md
+          - '**/README.md'
 doc:architectures:
-  - docs/architectures.md
+  - changed-files:
+      - any-glob-to-any-file:
+          - docs/architectures.md
 doc:requirements:
-  - docs/requirements.md
+  - changed-files:
+      - any-glob-to-any-file:
+          - docs/requirements.md
 experience:cd:
-  - .github/workflows/**/*-deploy.{yaml,yml}
+  - changed-files:
+      - any-glob-to-any-file:
+          - .github/workflows/**/*-deploy.{yaml,yml}
 experience:ci:
-  - .github/workflows/**/*
+  - changed-files:
+      - any-glob-to-any-file:
+          - .github/workflows/**/*
 experience:develop:
-  - tsconfig.json
-  - .npmrc
-  - .gitignore
-  - package.json
-  - .husky/**/*
-  - .vscode/**/*
+  - changed-files:
+      - any-glob-to-any-file:
+          - tsconfig.json
+          - .npmrc
+          - .gitignore
+          - package.json
+          - .husky/**/*
+          - .vscode/**/*
 experience:docker:
-  - docker-compose.{yaml,yml}
-  - '**/docker-compose.{yaml,yml}'
-  - Dockerfile
-  - '**/Dockerfile'
+  - changed-files:
+      - any-glob-to-any-file:
+          - docker-compose.{yaml,yml}
+          - '**/docker-compose.{yaml,yml}'
+          - Dockerfile
+          - '**/Dockerfile'
 role:bff:
-  - apps/**/bff/**/*
+  - changed-files:
+      - any-glob-to-any-file:
+          - apps/**/bff/**/*
 role:client:
-  - apps/client/**/*
+  - changed-files:
+      - any-glob-to-any-file:
+          - apps/client/**/*
 role:service:
-  - apps/cores/**/*
+  - changed-files:
+      - any-glob-to-any-file:
+          - apps/cores/**/*
