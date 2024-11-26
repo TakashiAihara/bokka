@@ -15,7 +15,7 @@
     "vitest": "catalog:"
   },
   "dependencies": {
-    "@users/bff-cli": "workspace:*",
+    "@users/cli-bff": "workspace:*",
     "commander": "^12.1.0",
     "hono": "^4.6.8"
   }

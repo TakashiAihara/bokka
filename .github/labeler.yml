@@ -1,0 +1,53 @@
+architecture:container:
+  - apps/cores/**/*
+architecture:serverless:
+  - apps/**/bff/**/*
+framework:react:
+  - apps/users/client/extension/**/*
+framework:commander:
+  - apps/**/client/cli/**/*
+framework:hono:
+  - apps/**/bff/**/*
+framework:nestjs:
+  - apps/cores/**/*
+tool:biome:
+  - tools/biome/**/*
+tool:github-actions:
+  - .github/workflows/**/*
+tool:github-labels:
+  - .github/labeler.yml
+tool:typescript:
+  - '**/*.ts'
+  - '**/*.tsx'
+tool:vitest:
+  - '**/vitest.config.*'
+  - '**/*.test.ts'
+  - '**/*.spec.ts'
+doc:readme:
+  - README.md
+doc:architectures:
+  - docs/architectures.md
+doc:requirements:
+  - docs/requirements.md
+experience:cd:
+  - .github/workflows/**/*-deploy.{yaml,yml}
+experience:ci:
+  - .github/workflows/**/*
+experience:develop:
+  - tsconfig.json
+  - .npmrc
+  - .gitignore
+  - package.json
+  - .husky/**/*
+  - .vscode/**/*
+experience:docker:
+  - docker-compose.{yaml,yml}
+  - '**/docker-compose.{yaml,yml}'
+  - Dockerfile
+  - '**/Dockerfile'
+role:bff:
+  - apps/**/bff/**/*
+role:client:
+  - apps/client/**/*
+role:service:
+  - apps/cores/**/*

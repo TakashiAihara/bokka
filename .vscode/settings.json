@@ -1,7 +1,87 @@
 {
   "biome.enabled": true,
-  "biome.rename": true,
-  "biome.searchInPath": true,
+  "biome.projects": [
+    {
+      "path": "apps/cores/bookmarks/organizer/read",
+      "configFile": "apps/cores/bookmarks/organizer/read/biome.json"
+    },
+    {
+      "path": "apps/cores/bookmarks/organizer/write",
+      "configFile": "apps/cores/bookmarks/organizer/write/biome.json"
+    },
+    {
+      "path": "apps/cores/bookmarks/analyzer",
+      "configFile": "apps/cores/bookmarks/analyzer/biome.json"
+    },
+    {
+      "path": "apps/cores/bookmarks/streamer",
+      "configFile": "apps/cores/bookmarks/streamer/biome.json"
+    },
+    {
+      "path": "apps/cores/feeds/organizer/read",
+      "configFile": "apps/cores/feeds/organizer/read/biome.json"
+    },
+    {
+      "path": "apps/cores/feeds/organizer/write",
+      "configFile": "apps/cores/feeds/organizer/write/biome.json"
+    },
+    {
+      "path": "apps/cores/feeds/analyzer",
+      "configFile": "apps/cores/feeds/analyzer/biome.json"
+    },
+    {
+      "path": "apps/cores/feeds/explorer",
+      "configFile": "apps/cores/feeds/explorer/biome.json"
+    },
+    {
+      "path": "apps/cores/feeds/scheduler",
+      "configFile": "apps/cores/feeds/scheduler/biome.json"
+    },
+    {
+      "path": "apps/cores/feeds/streamer",
+      "configFile": "apps/cores/feeds/streamer/biome.json"
+    },
+    {
+      "path": "apps/managers/bff/cli",
+      "configFile": "apps/managers/bff/cli/biome.json"
+    },
+    {
+      "path": "apps/managers/client/cli",
+      "configFile": "apps/managers/client/cli/biome.json"
+    },
+    {
+      "path": "apps/users/bff/cli",
+      "configFile": "apps/users/bff/cli/biome.json"
+    },
+    {
+      "path": "apps/users/bff/extension",
+      "configFile": "apps/users/bff/extension/biome.json"
+    },
+    {
+      "path": "apps/users/client/cli",
+      "configFile": "apps/users/client/cli/biome.json"
+    },
+    {
+      "path": "apps/users/client/extension",
+      "configFile": "apps/users/client/extension/biome.json"
+    },
+    {
+      "path": "packages/shared",
+      "configFile": "packages/shared/biome.json"
+    },
+    {
+      "path": "tools/github/labels",
+      "configFile": "tools/github/labels/biome.json"
+    },
+    {
+      "path": "tools/typescript",
+      "configFile": "tools/typescript/biome.json"
+    },
+    {
+      "path": "tools/vitest",
+      "configFile": "tools/vitest/biome.json"
+    }
+  ],
   "cSpell.words": [
     "ABFF",
     "Aihara",
@@ -64,5 +144,16 @@
   },
   "[python]": {
     "editor.defaultFormatter": "ms-python.black-formatter"
-  }
+  },
+  "editor.codeActionsOnSave": {
+    "quickfix.biome": "explicit",
+    "source.fixAll.biome": "explicit",
+    "source.organizeImports": "explicit",
+    "source.removeUnusedImports": "explicit",
+    "source.sortImports": "explicit",
+    "source.removeUnused.ts": "explicit",
+    "source.fixAll.ts": "explicit",
+  },
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true
 }

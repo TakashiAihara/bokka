@@ -1,12 +1,12 @@
 {
   "compilerOptions": {
-    "typeRoots": ["./node_modules/@types", "./types", "./node_modules/vitest"],
-    "types": ["chrome", "chrome.readingList", "globals"],
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "strict": true,
+    "skipLibCheck": true,
     "outDir": "./dist",
-    "baseUrl": ".",
-    "jsx": "preserve",
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
+    "baseUrl": "./",
     "paths": {
       "@/*": ["src/*"],
       "@domain/*": ["src/domain/*"],

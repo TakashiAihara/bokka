@@ -1,9 +1,15 @@
 packages:
-  - tools/*
-  - packages/*
+  - tools/**
+  - packages/**
   - apps/cores/**
   - apps/users/**
-  - apps/managers/*
+  - apps/managers/**
+
+exclude:
+  - "**/dist/**"
+  - "**/node_modules/**"
+  - "**/coverage/**"
+  - "**/build/**"
 
 catalog:
   '@vitest/coverage-v8': '^2.1.1'
