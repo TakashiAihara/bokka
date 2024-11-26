@@ -1,11 +1,16 @@
 import { typecheckPlugin } from '@jgoz/esbuild-plugin-typecheck';
 import esbuild from 'esbuild';
+import { z } from 'zod';
 import { copyFilesPlugin } from './esbuild/copyFilesPlugin';
 import { generateIconsPlugin } from './esbuild/generateIconsPlugin';
 import { generateManifestPlugin } from './esbuild/generateManifestPlugin';
 
 const outdir = 'dist';
 const entryPoints = ['src/presentation/background/index.ts', 'src/presentation/popup/index.tsx'];
+const EnvSchema = z.object({
+  NODE_ENV: z.enum(['development', 'production']).default('development'),
+});
+const env = EnvSchema.parse(process.env);
 
 esbuild
   .build({
@@ -42,8 +47,8 @@ esbuild
         },
       }),
     ],
-    minify: process.env.NODE_ENV === 'production',
-    sourcemap: process.env.NODE_ENV !== 'production',
+    minify: env.NODE_ENV === 'production',
+    sourcemap: env.NODE_ENV !== 'production',
     jsx: 'automatic',
     alias: {
       '@': './src',
