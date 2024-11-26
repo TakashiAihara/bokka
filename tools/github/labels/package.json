@@ -1,0 +1,34 @@
+{
+  "name": "@tools/github-labels",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "exec:create-label": "tsx src/createLabels.ts",
+    "exec:create-label:with-gh-token": "GITHUB_TOKEN=$(gh auth token) tsx src/createLabels.ts",
+    "generate:labeler": "tsx src/generateLabeler.ts",
+    "test": "vitest"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "catalog:",
+    "@packages/shared": "workspace:*",
+    "@tools/biome": "workspace:^",
+    "@tools/typescript": "workspace:^",
+    "@tools/vitest": "workspace:^",
+    "@types/js-yaml": "^4.0.9",
+    "@types/node": "catalog:",
+    "@types/parse-github-url": "^1.0.3",
+    "@vitest/coverage-v8": "catalog:",
+    "tsx": "catalog:",
+    "typescript": "catalog:",
+    "vitest": "catalog:"
+  },
+  "dependencies": {
+    "@octokit/rest": "^21.0.2",
+    "@pnpm/find-workspace-dir": "^7.0.2",
+    "isomorphic-git": "^1.27.2",
+    "js-yaml": "^4.1.0",
+    "octokit": "^4.0.2",
+    "parse-github-url": "^1.0.3",
+    "zod": "^3.23.8"
+  }
+}
