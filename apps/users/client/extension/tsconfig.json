@@ -3,7 +3,7 @@
     "typeRoots": ["./node_modules/@types", "./types", "./node_modules/vitest"],
     "types": ["chrome", "chrome.readingList", "globals"],
     "outDir": "./dist",
-    "baseUrl": "./",
+    "baseUrl": ".",
     "jsx": "preserve",
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
