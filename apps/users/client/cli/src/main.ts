@@ -1,4 +1,4 @@
-import type { Route as BffRoute } from '@users/bff-cli';
+import type { Route as BffRoute } from '@users/cli-bff';
 import { Command } from 'commander';
 import { hc } from 'hono/client';
 
