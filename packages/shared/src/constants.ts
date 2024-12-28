@@ -26,4 +26,4 @@ export const tools = ['biome', 'github-actions', 'github-labels', 'typescript', 
 export const operations = ['monitoring', 'logging'] as const;
 
 export const owner = 'TakashiAihara';
-export const application = 'bokk';
+export const application = 'bokka';
