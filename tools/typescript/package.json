@@ -4,6 +4,7 @@
     "*.json"
   ],
   "devDependencies": {
+    "@tools/biome": "workspace:^",
     "@tsconfig/strictest": "catalog:"
   }
 }

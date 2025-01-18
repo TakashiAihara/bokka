@@ -16,12 +16,13 @@ plugins:
     opt:
       - esModuleInterop=true
       - lowerCaseServiceMethods=true
-      - outputClientImpl=false
+      - outputClientImpl=true
       - outputIndex=true
       - outputJsonMethods=false
       - outputServices=nice-grpc
+      - outputServices=generic-definitions
       - outputTypeRegistry=true
       - removeEnumPrefix=true
-      - useExactTypes=false
+      - useExactTypes=true
       - useMapType=true
       - useReadonlyTypes=true

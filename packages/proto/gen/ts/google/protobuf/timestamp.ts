@@ -165,10 +165,10 @@ export const Timestamp: MessageFns<Timestamp, "google.protobuf.Timestamp"> = {
     return message;
   },
 
-  create(base?: DeepPartial<Timestamp>): Timestamp {
-    return Timestamp.fromPartial(base ?? {});
+  create<I extends Exact<DeepPartial<Timestamp>, I>>(base?: I): Timestamp {
+    return Timestamp.fromPartial(base ?? ({} as any));
   },
-  fromPartial(object: DeepPartial<Timestamp>): Timestamp {
+  fromPartial<I extends Exact<DeepPartial<Timestamp>, I>>(object: I): Timestamp {
     const message = createBaseTimestamp() as any;
     message.seconds = object.seconds ?? 0;
     message.nanos = object.nanos ?? 0;
@@ -186,6 +186,10 @@ type DeepPartial<T> = T extends Builtin ? T
   : T extends {} ? { [K in Exclude<keyof T, "$type">]?: DeepPartial<T[K]> }
   : Partial<T>;
 
+type KeysOfUnion<T> = T extends T ? keyof T : never;
+type Exact<P, I extends P> = P extends Builtin ? P
+  : P & { [K in keyof P]: Exact<P[K], I[K]> } & { [K in Exclude<keyof I, KeysOfUnion<P> | "$type">]: never };
+
 function longToNumber(int64: { toString(): string }): number {
   const num = globalThis.Number(int64.toString());
   if (num > globalThis.Number.MAX_SAFE_INTEGER) {
@@ -201,6 +205,6 @@ interface MessageFns<T, V extends string> {
   readonly $type: V;
   encode(message: T, writer?: BinaryWriter): BinaryWriter;
   decode(input: BinaryReader | Uint8Array, length?: number): T;
-  create(base?: DeepPartial<T>): T;
-  fromPartial(object: DeepPartial<T>): T;
+  create<I extends Exact<DeepPartial<T>, I>>(base?: I): T;
+  fromPartial<I extends Exact<DeepPartial<T>, I>>(object: I): T;
 }

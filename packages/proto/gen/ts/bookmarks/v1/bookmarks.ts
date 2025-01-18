@@ -156,10 +156,10 @@ export const BookmarkTag: MessageFns<BookmarkTag, "bookmarks.v1.BookmarkTag"> = 
     return message;
   },
 
-  create(base?: DeepPartial<BookmarkTag>): BookmarkTag {
-    return BookmarkTag.fromPartial(base ?? {});
+  create<I extends Exact<DeepPartial<BookmarkTag>, I>>(base?: I): BookmarkTag {
+    return BookmarkTag.fromPartial(base ?? ({} as any));
   },
-  fromPartial(object: DeepPartial<BookmarkTag>): BookmarkTag {
+  fromPartial<I extends Exact<DeepPartial<BookmarkTag>, I>>(object: I): BookmarkTag {
     const message = createBaseBookmarkTag() as any;
     message.id = object.id ?? "";
     message.name = object.name ?? "";
@@ -297,10 +297,10 @@ export const Bookmark: MessageFns<Bookmark, "bookmarks.v1.Bookmark"> = {
     return message;
   },
 
-  create(base?: DeepPartial<Bookmark>): Bookmark {
-    return Bookmark.fromPartial(base ?? {});
+  create<I extends Exact<DeepPartial<Bookmark>, I>>(base?: I): Bookmark {
+    return Bookmark.fromPartial(base ?? ({} as any));
   },
-  fromPartial(object: DeepPartial<Bookmark>): Bookmark {
+  fromPartial<I extends Exact<DeepPartial<Bookmark>, I>>(object: I): Bookmark {
     const message = createBaseBookmark() as any;
     message.id = object.id ?? "";
     message.url = object.url ?? "";
@@ -354,10 +354,10 @@ export const GetBookmarkRequest: MessageFns<GetBookmarkRequest, "bookmarks.v1.Ge
     return message;
   },
 
-  create(base?: DeepPartial<GetBookmarkRequest>): GetBookmarkRequest {
-    return GetBookmarkRequest.fromPartial(base ?? {});
+  create<I extends Exact<DeepPartial<GetBookmarkRequest>, I>>(base?: I): GetBookmarkRequest {
+    return GetBookmarkRequest.fromPartial(base ?? ({} as any));
   },
-  fromPartial(object: DeepPartial<GetBookmarkRequest>): GetBookmarkRequest {
+  fromPartial<I extends Exact<DeepPartial<GetBookmarkRequest>, I>>(object: I): GetBookmarkRequest {
     const message = createBaseGetBookmarkRequest() as any;
     message.id = object.id ?? "";
     return message;
@@ -437,10 +437,10 @@ export const ListBookmarksRequest: MessageFns<ListBookmarksRequest, "bookmarks.v
     return message;
   },
 
-  create(base?: DeepPartial<ListBookmarksRequest>): ListBookmarksRequest {
-    return ListBookmarksRequest.fromPartial(base ?? {});
+  create<I extends Exact<DeepPartial<ListBookmarksRequest>, I>>(base?: I): ListBookmarksRequest {
+    return ListBookmarksRequest.fromPartial(base ?? ({} as any));
   },
-  fromPartial(object: DeepPartial<ListBookmarksRequest>): ListBookmarksRequest {
+  fromPartial<I extends Exact<DeepPartial<ListBookmarksRequest>, I>>(object: I): ListBookmarksRequest {
     const message = createBaseListBookmarksRequest() as any;
     message.pageSize = object.pageSize ?? 0;
     message.pageToken = object.pageToken ?? "";
@@ -512,10 +512,10 @@ export const ListBookmarksResponse: MessageFns<ListBookmarksResponse, "bookmarks
     return message;
   },
 
-  create(base?: DeepPartial<ListBookmarksResponse>): ListBookmarksResponse {
-    return ListBookmarksResponse.fromPartial(base ?? {});
+  create<I extends Exact<DeepPartial<ListBookmarksResponse>, I>>(base?: I): ListBookmarksResponse {
+    return ListBookmarksResponse.fromPartial(base ?? ({} as any));
   },
-  fromPartial(object: DeepPartial<ListBookmarksResponse>): ListBookmarksResponse {
+  fromPartial<I extends Exact<DeepPartial<ListBookmarksResponse>, I>>(object: I): ListBookmarksResponse {
     const message = createBaseListBookmarksResponse() as any;
     message.bookmarks = object.bookmarks?.map((e) => Bookmark.fromPartial(e)) || [];
     message.nextPageToken = object.nextPageToken ?? "";
@@ -615,10 +615,10 @@ export const CreateBookmarkRequest: MessageFns<CreateBookmarkRequest, "bookmarks
     return message;
   },
 
-  create(base?: DeepPartial<CreateBookmarkRequest>): CreateBookmarkRequest {
-    return CreateBookmarkRequest.fromPartial(base ?? {});
+  create<I extends Exact<DeepPartial<CreateBookmarkRequest>, I>>(base?: I): CreateBookmarkRequest {
+    return CreateBookmarkRequest.fromPartial(base ?? ({} as any));
   },
-  fromPartial(object: DeepPartial<CreateBookmarkRequest>): CreateBookmarkRequest {
+  fromPartial<I extends Exact<DeepPartial<CreateBookmarkRequest>, I>>(object: I): CreateBookmarkRequest {
     const message = createBaseCreateBookmarkRequest() as any;
     message.url = object.url ?? "";
     message.title = object.title ?? "";
@@ -630,6 +630,38 @@ export const CreateBookmarkRequest: MessageFns<CreateBookmarkRequest, "bookmarks
 };
 
 messageTypeRegistry.set(CreateBookmarkRequest.$type, CreateBookmarkRequest);
+
+export type BookmarkServiceDefinition = typeof BookmarkServiceDefinition;
+export const BookmarkServiceDefinition = {
+  name: "BookmarkService",
+  fullName: "bookmarks.v1.BookmarkService",
+  methods: {
+    getBookmark: {
+      name: "GetBookmark",
+      requestType: GetBookmarkRequest,
+      requestStream: false,
+      responseType: Bookmark,
+      responseStream: false,
+      options: {},
+    },
+    listBookmarks: {
+      name: "ListBookmarks",
+      requestType: ListBookmarksRequest,
+      requestStream: false,
+      responseType: ListBookmarksResponse,
+      responseStream: false,
+      options: {},
+    },
+    createBookmark: {
+      name: "CreateBookmark",
+      requestType: CreateBookmarkRequest,
+      requestStream: false,
+      responseType: Bookmark,
+      responseStream: false,
+      options: {},
+    },
+  },
+} as const;
 
 export interface BookmarkServiceImplementation<CallContextExt = {}> {
   getBookmark(request: GetBookmarkRequest, context: CallContext & CallContextExt): Promise<DeepPartial<Bookmark>>;
@@ -660,6 +692,10 @@ type DeepPartial<T> = T extends Builtin ? T
   : T extends {} ? { [K in Exclude<keyof T, "$type">]?: DeepPartial<T[K]> }
   : Partial<T>;
 
+type KeysOfUnion<T> = T extends T ? keyof T : never;
+type Exact<P, I extends P> = P extends Builtin ? P
+  : P & { [K in keyof P]: Exact<P[K], I[K]> } & { [K in Exclude<keyof I, KeysOfUnion<P> | "$type">]: never };
+
 function toTimestamp(date: Date): Timestamp {
   const seconds = Math.trunc(date.getTime() / 1_000);
   const nanos = (date.getTime() % 1_000) * 1_000_000;
@@ -676,6 +712,6 @@ interface MessageFns<T, V extends string> {
   readonly $type: V;
   encode(message: T, writer?: BinaryWriter): BinaryWriter;
   decode(input: BinaryReader | Uint8Array, length?: number): T;
-  create(base?: DeepPartial<T>): T;
-  fromPartial(object: DeepPartial<T>): T;
+  create<I extends Exact<DeepPartial<T>, I>>(base?: I): T;
+  fromPartial<I extends Exact<DeepPartial<T>, I>>(object: I): T;
 }

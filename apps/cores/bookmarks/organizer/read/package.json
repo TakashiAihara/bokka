@@ -37,11 +37,18 @@
     "type:check": "tsc --noEmit"
   },
   "dependencies": {
+    "@bufbuild/protobuf": "^2.2.2",
+    "@grpc/grpc-js": "catalog:",
+    "@grpc/proto-loader": "^0.7.13",
     "@nestjs/common": "^11.0.1",
     "@nestjs/core": "^11.0.1",
     "@nestjs/platform-express": "^11.0.1",
+    "@packages/proto": "workspace:^",
     "@tools/typescript": "workspace:^",
     "@tools/vitest": "workspace:^",
+    "grpc-tools": "^1.12.4",
+    "nice-grpc": "catalog:",
+    "nice-grpc-common": "catalog:",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.1"
   },

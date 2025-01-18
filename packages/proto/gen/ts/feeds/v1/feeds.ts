@@ -228,10 +228,10 @@ export const Feed: MessageFns<Feed, "feeds.v1.Feed"> = {
     return message;
   },
 
-  create(base?: DeepPartial<Feed>): Feed {
-    return Feed.fromPartial(base ?? {});
+  create<I extends Exact<DeepPartial<Feed>, I>>(base?: I): Feed {
+    return Feed.fromPartial(base ?? ({} as any));
   },
-  fromPartial(object: DeepPartial<Feed>): Feed {
+  fromPartial<I extends Exact<DeepPartial<Feed>, I>>(object: I): Feed {
     const message = createBaseFeed() as any;
     message.id = object.id ?? "";
     message.url = object.url ?? "";
@@ -331,10 +331,10 @@ export const FeedTag: MessageFns<FeedTag, "feeds.v1.FeedTag"> = {
     return message;
   },
 
-  create(base?: DeepPartial<FeedTag>): FeedTag {
-    return FeedTag.fromPartial(base ?? {});
+  create<I extends Exact<DeepPartial<FeedTag>, I>>(base?: I): FeedTag {
+    return FeedTag.fromPartial(base ?? ({} as any));
   },
-  fromPartial(object: DeepPartial<FeedTag>): FeedTag {
+  fromPartial<I extends Exact<DeepPartial<FeedTag>, I>>(object: I): FeedTag {
     const message = createBaseFeedTag() as any;
     message.id = object.id ?? "";
     message.name = object.name ?? "";
@@ -385,10 +385,10 @@ export const GetFeedRequest: MessageFns<GetFeedRequest, "feeds.v1.GetFeedRequest
     return message;
   },
 
-  create(base?: DeepPartial<GetFeedRequest>): GetFeedRequest {
-    return GetFeedRequest.fromPartial(base ?? {});
+  create<I extends Exact<DeepPartial<GetFeedRequest>, I>>(base?: I): GetFeedRequest {
+    return GetFeedRequest.fromPartial(base ?? ({} as any));
   },
-  fromPartial(object: DeepPartial<GetFeedRequest>): GetFeedRequest {
+  fromPartial<I extends Exact<DeepPartial<GetFeedRequest>, I>>(object: I): GetFeedRequest {
     const message = createBaseGetFeedRequest() as any;
     message.id = object.id ?? "";
     return message;
@@ -490,10 +490,10 @@ export const ListFeedsRequest: MessageFns<ListFeedsRequest, "feeds.v1.ListFeedsR
     return message;
   },
 
-  create(base?: DeepPartial<ListFeedsRequest>): ListFeedsRequest {
-    return ListFeedsRequest.fromPartial(base ?? {});
+  create<I extends Exact<DeepPartial<ListFeedsRequest>, I>>(base?: I): ListFeedsRequest {
+    return ListFeedsRequest.fromPartial(base ?? ({} as any));
   },
-  fromPartial(object: DeepPartial<ListFeedsRequest>): ListFeedsRequest {
+  fromPartial<I extends Exact<DeepPartial<ListFeedsRequest>, I>>(object: I): ListFeedsRequest {
     const message = createBaseListFeedsRequest() as any;
     message.pageSize = object.pageSize ?? 0;
     message.pageToken = object.pageToken ?? "";
@@ -567,10 +567,10 @@ export const ListFeedsResponse: MessageFns<ListFeedsResponse, "feeds.v1.ListFeed
     return message;
   },
 
-  create(base?: DeepPartial<ListFeedsResponse>): ListFeedsResponse {
-    return ListFeedsResponse.fromPartial(base ?? {});
+  create<I extends Exact<DeepPartial<ListFeedsResponse>, I>>(base?: I): ListFeedsResponse {
+    return ListFeedsResponse.fromPartial(base ?? ({} as any));
   },
-  fromPartial(object: DeepPartial<ListFeedsResponse>): ListFeedsResponse {
+  fromPartial<I extends Exact<DeepPartial<ListFeedsResponse>, I>>(object: I): ListFeedsResponse {
     const message = createBaseListFeedsResponse() as any;
     message.feeds = object.feeds?.map((e) => Feed.fromPartial(e)) || [];
     message.nextPageToken = object.nextPageToken ?? "";
@@ -663,10 +663,10 @@ export const CreateFeedRequest: MessageFns<CreateFeedRequest, "feeds.v1.CreateFe
     return message;
   },
 
-  create(base?: DeepPartial<CreateFeedRequest>): CreateFeedRequest {
-    return CreateFeedRequest.fromPartial(base ?? {});
+  create<I extends Exact<DeepPartial<CreateFeedRequest>, I>>(base?: I): CreateFeedRequest {
+    return CreateFeedRequest.fromPartial(base ?? ({} as any));
   },
-  fromPartial(object: DeepPartial<CreateFeedRequest>): CreateFeedRequest {
+  fromPartial<I extends Exact<DeepPartial<CreateFeedRequest>, I>>(object: I): CreateFeedRequest {
     const message = createBaseCreateFeedRequest() as any;
     message.url = object.url ?? "";
     message.title = object.title ?? "";
@@ -678,6 +678,38 @@ export const CreateFeedRequest: MessageFns<CreateFeedRequest, "feeds.v1.CreateFe
 };
 
 messageTypeRegistry.set(CreateFeedRequest.$type, CreateFeedRequest);
+
+export type FeedServiceDefinition = typeof FeedServiceDefinition;
+export const FeedServiceDefinition = {
+  name: "FeedService",
+  fullName: "feeds.v1.FeedService",
+  methods: {
+    getFeed: {
+      name: "GetFeed",
+      requestType: GetFeedRequest,
+      requestStream: false,
+      responseType: Feed,
+      responseStream: false,
+      options: {},
+    },
+    listFeeds: {
+      name: "ListFeeds",
+      requestType: ListFeedsRequest,
+      requestStream: false,
+      responseType: ListFeedsResponse,
+      responseStream: false,
+      options: {},
+    },
+    createFeed: {
+      name: "CreateFeed",
+      requestType: CreateFeedRequest,
+      requestStream: false,
+      responseType: Feed,
+      responseStream: false,
+      options: {},
+    },
+  },
+} as const;
 
 export interface FeedServiceImplementation<CallContextExt = {}> {
   getFeed(request: GetFeedRequest, context: CallContext & CallContextExt): Promise<DeepPartial<Feed>>;
@@ -699,6 +731,10 @@ type DeepPartial<T> = T extends Builtin ? T
   : T extends {} ? { [K in Exclude<keyof T, "$type">]?: DeepPartial<T[K]> }
   : Partial<T>;
 
+type KeysOfUnion<T> = T extends T ? keyof T : never;
+type Exact<P, I extends P> = P extends Builtin ? P
+  : P & { [K in keyof P]: Exact<P[K], I[K]> } & { [K in Exclude<keyof I, KeysOfUnion<P> | "$type">]: never };
+
 function toTimestamp(date: Date): Timestamp {
   const seconds = Math.trunc(date.getTime() / 1_000);
   const nanos = (date.getTime() % 1_000) * 1_000_000;
@@ -715,6 +751,6 @@ interface MessageFns<T, V extends string> {
   readonly $type: V;
   encode(message: T, writer?: BinaryWriter): BinaryWriter;
   decode(input: BinaryReader | Uint8Array, length?: number): T;
-  create(base?: DeepPartial<T>): T;
-  fromPartial(object: DeepPartial<T>): T;
+  create<I extends Exact<DeepPartial<T>, I>>(base?: I): T;
+  fromPartial<I extends Exact<DeepPartial<T>, I>>(object: I): T;
 }
