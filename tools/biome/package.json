@@ -6,5 +6,8 @@
   ],
   "dependencies": {
     "@biomejs/biome": "catalog:"
+  },
+  "devDependencies": {
+    "@tools/biome": "workspace:^"
   }
 }

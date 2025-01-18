@@ -1,0 +1,35 @@
+{
+  "name": "@packages/proto",
+  "version": "1.0.0",
+  "type": "module",
+  "exports": {
+    ".": "./gen/ts/index.ts",
+    "./bookmarks": "./gen/ts/index.bookmarks.ts",
+    "./bookmarks/v1": "./gen/ts/index.bookmarks.v1.ts",
+    "./feeds": "./gen/ts/index.feeds.ts",
+    "./feeds/v1": "./gen/ts/index.feeds.v1.ts"
+  },
+  "main": "gen/ts/index.ts",
+  "module": "gen/ts/index.ts",
+  "types": "gen/ts/index.ts",
+  "files": [
+    "gen",
+    "docs"
+  ],
+  "scripts": {
+    "check-breaking": "buf breaking --against '.git#branch=main'",
+    "clean": "rm -rf gen",
+    "generate": "buf generate",
+    "lint": "buf lint"
+  },
+  "dependencies": {
+    "@grpc/grpc-js": "catalog:",
+    "nice-grpc": "catalog:",
+    "nice-grpc-common": "catalog:"
+  },
+  "devDependencies": {
+    "@bufbuild/buf": "^1.47.2",
+    "@bufbuild/protobuf": "^2.2.2",
+    "ts-proto": "^2.4.1"
+  }
+}
