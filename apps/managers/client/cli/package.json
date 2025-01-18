@@ -7,8 +7,8 @@
   },
   "dependencies": {
     "@users/cli-bff": "workspace:*",
-    "commander": "^12.1.0",
-    "hono": "^4.6.8"
+    "commander": "^13.0.0",
+    "hono": "^4.6.17"
   },
   "devDependencies": {
     "@biomejs/biome": "catalog:",

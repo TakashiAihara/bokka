@@ -45,7 +45,7 @@
     "@biomejs/biome": "catalog:",
     "@tools/biome": "workspace:^",
     "husky": "catalog:",
-    "sort-package-json": "^2.10.1"
+    "sort-package-json": "^2.14.0"
   },
   "packageManager": "pnpm@9.15.1",
   "engines": {
@@ -57,6 +57,6 @@
   },
   "volta": {
     "node": "22.12.0",
-    "pnpm": "9.12.3"
+    "pnpm": "9.15.1"
   }
 }
