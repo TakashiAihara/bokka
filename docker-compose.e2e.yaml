@@ -1,0 +1,237 @@
+# ===========================================
+# Bokka E2E Test Environment
+# ===========================================
+# Usage:
+#   pnpm e2e:up    - Start all services
+#   pnpm e2e:down  - Stop and remove all services
+#   pnpm e2e:test  - Run E2E tests
+#   pnpm e2e       - Run full E2E cycle
+# ===========================================
+
+services:
+  # ===========================================
+  # Infrastructure Services
+  # ===========================================
+
+  mysql:
+    image: mysql:8.0
+    container_name: bokka-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: bokka_test
+    ports:
+      - "3306:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  valkey:
+    image: valkey/valkey:8
+    container_name: bokka-valkey
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "valkey-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  pulsar:
+    image: apachepulsar/pulsar:3.3.0
+    container_name: bokka-pulsar
+    command: bin/pulsar standalone
+    ports:
+      - "6650:6650"   # Pulsar broker
+      - "8080:8080"   # Pulsar admin
+    healthcheck:
+      test: ["CMD", "bin/pulsar-admin", "brokers", "healthcheck"]
+      interval: 10s
+      timeout: 10s
+      retries: 10
+      start_period: 30s
+    environment:
+      PULSAR_MEM: "-Xms256m -Xmx256m"
+
+  # ===========================================
+  # Core Services - Bookmarks
+  # ===========================================
+
+  bookmarks-organizer-read:
+    build:
+      context: .
+      dockerfile: docker/core-service.Dockerfile
+      args:
+        SERVICE_PATH: bookmarks/organizer/read
+        SERVICE_PACKAGE: bookmarks-cores/organizer-read
+    container_name: bokka-bookmarks-read
+    environment:
+      - NODE_ENV=test
+      - DATABASE_HOST=mysql
+      - DATABASE_PORT=3306
+      - DATABASE_NAME=bokka_test
+      - DATABASE_USER=root
+      - DATABASE_PASSWORD=root
+      - VALKEY_HOST=valkey
+      - VALKEY_PORT=6379
+      - GRPC_PORT=50051
+      - HTTP_PORT=3000
+    ports:
+      - "50051:50051"  # gRPC
+      - "3001:3000"    # HTTP
+    depends_on:
+      mysql:
+        condition: service_healthy
+      valkey:
+        condition: service_healthy
+
+  bookmarks-organizer-write:
+    build:
+      context: .
+      dockerfile: docker/core-service.Dockerfile
+      args:
+        SERVICE_PATH: bookmarks/organizer/write
+        SERVICE_PACKAGE: bookmarks-cores/organizer-write
+    container_name: bokka-bookmarks-write
+    environment:
+      - NODE_ENV=test
+      - DATABASE_HOST=mysql
+      - DATABASE_PORT=3306
+      - DATABASE_NAME=bokka_test
+      - DATABASE_USER=root
+      - DATABASE_PASSWORD=root
+      - VALKEY_HOST=valkey
+      - VALKEY_PORT=6379
+      - PULSAR_SERVICE_URL=pulsar://pulsar:6650
+      - HTTP_PORT=3000
+    ports:
+      - "3002:3000"    # HTTP
+    depends_on:
+      mysql:
+        condition: service_healthy
+      valkey:
+        condition: service_healthy
+      pulsar:
+        condition: service_healthy
+
+  # ===========================================
+  # Core Services - Feeds
+  # ===========================================
+
+  feeds-organizer-read:
+    build:
+      context: .
+      dockerfile: docker/core-service.Dockerfile
+      args:
+        SERVICE_PATH: feeds/organizer/read
+        SERVICE_PACKAGE: feeds-cores/organizer-read
+    container_name: bokka-feeds-read
+    environment:
+      - NODE_ENV=test
+      - DATABASE_HOST=mysql
+      - DATABASE_PORT=3306
+      - DATABASE_NAME=bokka_test
+      - DATABASE_USER=root
+      - DATABASE_PASSWORD=root
+      - VALKEY_HOST=valkey
+      - VALKEY_PORT=6379
+      - GRPC_PORT=50051
+      - HTTP_PORT=3000
+    ports:
+      - "50052:50051"  # gRPC
+      - "3003:3000"    # HTTP
+    depends_on:
+      mysql:
+        condition: service_healthy
+      valkey:
+        condition: service_healthy
+
+  feeds-organizer-write:
+    build:
+      context: .
+      dockerfile: docker/core-service.Dockerfile
+      args:
+        SERVICE_PATH: feeds/organizer/write
+        SERVICE_PACKAGE: feeds-cores/organizer-write
+    container_name: bokka-feeds-write
+    environment:
+      - NODE_ENV=test
+      - DATABASE_HOST=mysql
+      - DATABASE_PORT=3306
+      - DATABASE_NAME=bokka_test
+      - DATABASE_USER=root
+      - DATABASE_PASSWORD=root
+      - VALKEY_HOST=valkey
+      - VALKEY_PORT=6379
+      - PULSAR_SERVICE_URL=pulsar://pulsar:6650
+      - HTTP_PORT=3000
+    ports:
+      - "3004:3000"    # HTTP
+    depends_on:
+      mysql:
+        condition: service_healthy
+      valkey:
+        condition: service_healthy
+      pulsar:
+        condition: service_healthy
+
+  # ===========================================
+  # BFF Services
+  # ===========================================
+
+  users-bff:
+    build:
+      context: .
+      dockerfile: docker/bff-service.Dockerfile
+      args:
+        BFF_TYPE: users
+    container_name: bokka-users-bff
+    environment:
+      - NODE_ENV=test
+      - BOOKMARKS_GRPC_HOST=bookmarks-organizer-read
+      - BOOKMARKS_GRPC_PORT=50051
+      - FEEDS_GRPC_HOST=feeds-organizer-read
+      - FEEDS_GRPC_PORT=50051
+      - HTTP_PORT=3000
+    ports:
+      - "3010:3000"
+    depends_on:
+      - bookmarks-organizer-read
+      - feeds-organizer-read
+
+  managers-bff:
+    build:
+      context: .
+      dockerfile: docker/bff-service.Dockerfile
+      args:
+        BFF_TYPE: managers
+    container_name: bokka-managers-bff
+    environment:
+      - NODE_ENV=test
+      - BOOKMARKS_GRPC_HOST=bookmarks-organizer-read
+      - BOOKMARKS_GRPC_PORT=50051
+      - FEEDS_GRPC_HOST=feeds-organizer-read
+      - FEEDS_GRPC_PORT=50051
+      - HTTP_PORT=3000
+    ports:
+      - "3011:3000"
+    depends_on:
+      - bookmarks-organizer-read
+      - feeds-organizer-read
+
+# ===========================================
+# Volumes
+# ===========================================
+volumes:
+  mysql_data:
+
+# ===========================================
+# Networks
+# ===========================================
+networks:
+  default:
+    name: bokka-e2e-network
