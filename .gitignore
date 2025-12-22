@@ -16,6 +16,7 @@ node_modules/
 .env.production.local
 .env.local
 .env.production
+# Note: .env.e2e is committed for E2E test reproducibility
 
 # Logs
 logs/
