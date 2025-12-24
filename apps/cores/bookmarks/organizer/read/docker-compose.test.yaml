@@ -1,0 +1,24 @@
+# Bookmarks Organizer Read - Integration Test Environment
+services:
+  bookmarks-organizer-read:
+    build:
+      context: ../../../../../
+      dockerfile: apps/cores/bookmarks/organizer/read/Dockerfile
+    container_name: bookmarks-read-test
+    environment:
+      - NODE_ENV=test
+      - HTTP_PORT=3000
+      - GRPC_PORT=50051
+    ports:
+      - "13100:3000"   # HTTP (use non-standard port to avoid conflicts)
+      - "50151:50051"  # gRPC (use non-standard port to avoid conflicts)
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://localhost:3000').then(() => process.exit(0)).catch(() => process.exit(1))"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+
+networks:
+  default:
+    name: bookmarks-read-test-network

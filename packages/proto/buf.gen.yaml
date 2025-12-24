@@ -1,0 +1,28 @@
+version: v2
+clean: true
+managed:
+  enabled: true
+plugins:
+  - remote: buf.build/community/pseudomuto-doc
+    out: gen/docs
+
+  - remote: buf.build/grpc/node
+    out: gen/grpc
+    opt:
+      - grpc_js
+
+  - remote: buf.build/community/stephenh-ts-proto
+    out: gen/ts
+    opt:
+      - esModuleInterop=true
+      - lowerCaseServiceMethods=true
+      - outputClientImpl=true
+      - outputIndex=true
+      - outputJsonMethods=false
+      - outputServices=nice-grpc
+      - outputServices=generic-definitions
+      - outputTypeRegistry=true
+      - removeEnumPrefix=true
+      - useExactTypes=true
+      - useMapType=true
+      - useReadonlyTypes=true
